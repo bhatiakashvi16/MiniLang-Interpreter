@@ -322,6 +322,28 @@ public:
         else if((tokens[0]=="add" || tokens[0]=="subtract" || tokens[0]=="multiply" || tokens[0]=="divide") && tokens.size()==6
                 && tokens[2]=="and" && tokens[4]=="into")
         {commandQueue.push(new ArithmeticCommand(tokens[0],tokens[1],tokens[3],tokens[5]));}
+            //Help Command
+        else if(tokens[0]=="help")
+            {cout<<endl<<"================= AVAILABLE COMMANDS ================="<<endl;
+             cout<<endl<<"VARIABLE COMMANDS"<<endl;
+             cout<<"store <variable> as <value>"<<endl;
+             cout<<"display variable <variable>"<<endl;
+             cout<<"update <variable> as <value>"<<endl;
+             cout<<"delete <variable>"<<endl;
+             cout<<"showvars"<<endl;
+             cout<<endl<<"ARITHMETIC COMMANDS"<<endl;
+             cout<<"add <var1> and <var2> into <result>"<<endl;
+             cout<<"subtract <var1> and <var2> into <result>"<<endl;
+             cout<<"multiply <var1> and <var2> into <result>"<<endl;
+             cout<<"divide <var1> and <var2> into <result>"<<endl;
+             cout<<endl<<"OTHER COMMANDS"<<endl;
+             cout<<"increase <variable> by <number>"<<endl;
+             cout<<"decrease <variable> by <number>"<<endl;
+             cout<<"compare <var1> & <var2>"<<endl;
+             cout<<"about"<<endl;
+             cout<<"help"<<endl;
+             cout<<"exit"<<endl;
+             cout<<"======================================================"<<endl;}
         //Invalid Command
         else
         {cout<<"Invalid Command"<<endl;}}
