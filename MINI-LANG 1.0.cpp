@@ -141,13 +141,74 @@ public:
     };
 //Increase Value of Variable
 class IncreaseCommand : public Command
-{};
+{private:
+    string variable;
+    float value;
+public:
+    IncreaseCommand(string v,float val)
+    {variable = v;
+     value = val;}
+    void execute(map<string,Variable>& variables)
+    {if(variables.find(variable)==variables.end())
+        {throw runtime_error("Variable Not Found");}
+     Variable &obj = variables[variable];
+     if(obj.datatype=="int")
+        {obj.intValue += value;}
+     else if(obj.datatype=="float")
+        {obj.floatValue += value;}
+     else
+        {throw runtime_error("Increase Works Only On Numbers");}
+     cout<<variable<<" Increased"<<endl;}};
 //Decrease Value of Variable
 class DecreaseCommand : public Command
-{};
+{private:
+    string variable;
+    float value;
+public:
+    DecreaseCommand(string v,float val)
+    {variable = v;
+     value = val;}
+    void execute(map<string,Variable>& variables)
+    {if(variables.find(variable)==variables.end())
+        {throw runtime_error("Variable Not Found");}
+     Variable &obj = variables[variable];
+     if(obj.datatype=="int")
+        {obj.intValue -= value;}
+     else if(obj.datatype=="float")
+        {obj.floatValue -= value;}
+     else
+        {throw runtime_error("Decrease Works Only On Numbers");}
+     cout<<variable<<" Decreased"<<endl;}};
 //COMPARE COMMNAND
 class CompareCommand : public Command
-{};
+{private:
+    string a,b;
+public:
+    CompareCommand(string x,string y)
+    {a = x;
+     b = y;}
+    void execute(map<string,Variable>& variables)
+    {if(variables.find(a)==variables.end() || variables.find(b)==variables.end())
+        {throw runtime_error("Variable Not Found");}
+     Variable obj1 = variables[a];
+     Variable obj2 = variables[b];
+     if((obj1.datatype!="int" && obj1.datatype!="float") ||(obj2.datatype!="int" && obj2.datatype!="float"))
+        {throw runtime_error("Compare Supports Only Numbers");}
+     float x,y;
+     if(obj1.datatype=="int")
+        {x = obj1.intValue;}
+     else
+        {x = obj1.floatValue;}
+     if(obj2.datatype=="int")
+        {y = obj2.intValue;}
+     else
+        {y = obj2.floatValue;}
+     if(x>y)
+        {cout<<a<<" > "<<b<<endl;}
+     else if(x<y)
+        {cout<<a<<" < "<<b<<endl;}
+     else
+        {cout<<a<<" == "<<b<<endl;}}};
 class ArithmeticCommand : public Command
 {private:
     string operation;
