@@ -5,7 +5,7 @@
 - Git
 - Visual Studio Code / Code::Blocks / Any C++ IDE  
 **Clone the Repository**  
-- git clone https://github.com/<RAGHAV4056>/MiniLang.git
+- git clone https://github.com/RAGHAV4056/MiniLang-Interpreter.git
 - cd MiniLang  
 **Run the Interpreter**  
 - ./MiniLang  
